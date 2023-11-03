@@ -8,6 +8,7 @@ namespace Delegate
     {
         public delegate double MathOperation(double a, double b);
         public delegate void MulticastDelegate();
+        public delegate int FindMinMax(int[] digits);
         #region FOR MathOperation
         public static double Add(double a, double b) => a + b;
         public static double Subtract(double a, double b) => a - b;
@@ -19,12 +20,37 @@ namespace Delegate
         public static void M2() { Console.WriteLine("Method 2 is ran"); }
         public static void M3() { Console.WriteLine("Method 3 is ran"); }
         #endregion
+        #region FOR MIN/MAX
+        static int FindMax(int[] digits)
+        {
+            int max = digits[0];
+            for (int i = 1; i < digits.Length; i++)
+            {
+                if (digits[i] > max) max = digits[i];
+
+            }
+            return max;
+        }
+
+        static int FindMin(int[] digits)
+        {
+
+            int min = digits[0];
+            for (int i = 1; i < digits.Length; i++)
+            {
+                if (digits[i] < min) min = digits[i];
+
+            }
+            return min;
+        }
+        #endregion
 
 
         static void Main(string[] args)
         {
             //operation();
-            multicast();
+            //multicast();
+            minmax();
             Console.ReadKey();
         }
         static void operation()
@@ -83,6 +109,18 @@ namespace Delegate
             multicastDelegate += M2;
             multicastDelegate += M3;
             multicastDelegate();
+        }
+
+        static void minmax()
+        {
+            int[] digits = { 3, 2, 1, 0, -1, -2, -3 };
+
+            FindMinMax find_min = FindMin;
+            FindMinMax find_max = FindMax;
+            int min = find_min(digits);
+            int max = find_max(digits);
+            Console.WriteLine($"Min element: {min}");
+            Console.WriteLine($"Max element: {max}");
         }
     }
 }
