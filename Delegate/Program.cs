@@ -50,7 +50,10 @@ namespace Delegate
         {
             //operation();
             //multicast();
-            minmax();
+            //minmax();
+            //MathOperation anonMethod = delegate (double a, double b) { return a + b; };
+            //double result = anonMethod(2, 2);
+            //Console.WriteLine($"Result: {result}");
             Console.ReadKey();
         }
         static void operation()
