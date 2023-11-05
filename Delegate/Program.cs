@@ -9,6 +9,7 @@ namespace Delegate
         public delegate double MathOperation(double a, double b);
         public delegate void MulticastDelegate();
         public delegate int FindMinMax(int[] digits);
+        delegate bool EvenUneven(int number);
         #region FOR MathOperation
         public static double Add(double a, double b) => a + b;
         public static double Subtract(double a, double b) => a - b;
@@ -54,6 +55,8 @@ namespace Delegate
             //MathOperation anonMethod = delegate (double a, double b) { return a + b; };
             //double result = anonMethod(2, 2);
             //Console.WriteLine($"Result: {result}");
+            even_uneven(2);
+            even_uneven(3);
             Console.ReadKey();
         }
         static void operation()
@@ -113,7 +116,6 @@ namespace Delegate
             multicastDelegate += M3;
             multicastDelegate();
         }
-
         static void minmax()
         {
             int[] digits = { 3, 2, 1, 0, -1, -2, -3 };
@@ -124,6 +126,13 @@ namespace Delegate
             int max = find_max(digits);
             Console.WriteLine($"Min element: {min}");
             Console.WriteLine($"Max element: {max}");
+        }
+        static void even_uneven(int digit)
+        {
+            EvenUneven even = number => number % 2 == 0;
+            int digit1 = digit;
+            if (even(digit1)) Console.WriteLine($"{digit1} is even");
+            else Console.WriteLine($"{digit1} is uneven");  
         }
     }
 }
